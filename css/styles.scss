@@ -1,0 +1,24 @@
+@import "../vendor/scss/skeleton.scss";
+@import "./parts/header";
+@import "./parts/skills";
+@import "./parts/about";
+@import "./parts/contact";
+@import "./parts/footer";
+body {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    background-color: #090909;
+    color: white;
+    a:visited {
+        color: white;
+    }
+}
+
+.green-text {
+    color: rgb(8, 253, 216);
+}
+
+.highlight-character {
+    font-size: 150%;
+    font-weight: bolder;
+}

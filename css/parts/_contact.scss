@@ -1,0 +1,26 @@
+.contact {
+    margin-top: 100px;
+    .contact-input {
+        width: 100%;
+        background-color: whitesmoke;
+        color: black;
+    }
+    textarea {
+        height: 100px;
+    }
+    .contact-control {
+        text-align: right;
+        button {
+            color: rgb(8, 253, 216);
+            border: 1px solid rgb(8, 253, 216);
+            i {
+                margin-right: 10px;
+                margin-left: -5px;
+            }
+        }
+        button:hover {
+            background-color: rgb(8, 253, 216);
+            color: black;
+        }
+    }
+}
