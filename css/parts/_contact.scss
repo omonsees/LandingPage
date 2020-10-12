@@ -6,7 +6,7 @@
         color: black;
     }
     .contact-input:hover {
-        box-shadow: 0px 0px 12px rgb(8, 253, 216);
+        // box-shadow: 0px 0px 12px rgb(8, 253, 216);
     }
     textarea {
         height: 100px;
@@ -26,4 +26,12 @@
             color: black;
         }
     }
+}
+
+.green-box-shadow {
+    box-shadow: 0px 0px 12px rgb(8, 253, 216) !important;
+}
+
+.red-box-shadow {
+    box-shadow: 0px 0px 12px rgb(248, 45, 45) !important;
 }
