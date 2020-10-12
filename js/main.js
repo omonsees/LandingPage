@@ -29,16 +29,34 @@ document.addEventListener("DOMContentLoaded", event => {
 
     form.addEventListener("submit", event => {
         event.preventDefault();
+
+        //make sure fields are checked
+        checkFields();
+
         // AJAX call
+        // .then(success message)
+
     })
 })
+
+
+function checkFields() {
+    for (let field of Object.values(fields)) {
+        if (field.id === "email") {
+            isValidEmail(field);
+        } else {
+            isNotEmpty(field);
+        }
+    }
+}
+
 
 /**
  * 
  * @param {HTMLInputElement} field 
  */
 function isNotEmpty(field) {
-    const value = field.value;
+    const value = field.value.trim();
     if (!value) {
         setInvalid(field);
         return false;
