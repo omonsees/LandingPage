@@ -2,9 +2,16 @@ footer {
     margin-top: 50px;
     text-align: center;
     font-weight: lighter;
+    position: relative;
     hr {
-        width: 60%;
-        border-top: 1px solid rgb(8, 253, 216);
+        width: 40%;
+        margin-bottom: 10px;
+    }
+    .scroll-to-top {
+        color: rgb(8, 253, 216);
+        font-size: 100%;
+        cursor: pointer;
+        margin-bottom: 10px;
     }
     a {
         text-decoration: none;

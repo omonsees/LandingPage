@@ -35,7 +35,7 @@
 .slogan {
     em {
         font-weight: bold;
-        color: #08fdd8
+        color: rgb(8, 253, 216)
     }
     margin-top: 140px;
     font-weight: lighter;
@@ -55,7 +55,7 @@
     i {
         font-size: 250%;
         color: rgb(8, 253, 216);
-        padding-top: 7px;
+        padding-top: 6px;
         // transform: scale(1);
     }
 }
@@ -67,6 +67,7 @@
     }
     70% {
         // transform: scale(1);
+        // box-shadow: 0 0 0 10px rgba(226, 10, 10, 0);
         box-shadow: 0 0 0 10px rgba(8, 253, 216, 0);
     }
     100% {
