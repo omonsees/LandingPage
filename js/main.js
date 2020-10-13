@@ -1,8 +1,12 @@
+"use strict"
+
+const form = document.querySelector(".contact-form");
+const submitMessage = document.querySelector("#submit-message");
 const fields = {};
+let timeOut;
 
 document.addEventListener("DOMContentLoaded", event => {
 
-    // "scroll-to-top" button
     const button = document.querySelector(".scroll-to-top");
 
     button.addEventListener("click", event => {
@@ -10,8 +14,7 @@ document.addEventListener("DOMContentLoaded", event => {
         document.documentElement.scrollTop = 0;
     })
 
-    // email-form 
-    form = document.querySelector(".contact-form");
+
     fields.name = document.querySelector("#name");
     fields.email = document.querySelector("#email");
     fields.subject = document.querySelector("#subject");
@@ -29,25 +32,53 @@ document.addEventListener("DOMContentLoaded", event => {
 
     form.addEventListener("submit", event => {
         event.preventDefault();
-
-        //make sure fields are checked
-        checkFields();
-
-        // AJAX call
-        // .then(success message)
-
+        if (fieldsAreValid()) {
+            sendMail().then(() => {
+                clearFields();
+                showTempSubmitMessage("Thanks for your message!");
+            }).catch(() => {
+                clearFields();
+                showTempSubmitMessage("Oops, server problems :(")
+            })
+        } else {
+            showTempSubmitMessage("Did you miss a field?")
+        }
     })
 })
 
 
-function checkFields() {
+
+async function sendMail() {
+    const response = await fetch("https://jsonplaceholder.typicode.com/todos/2");
+    const object = await response.json();
+}
+
+function showTempSubmitMessage(text) {
+    clearTimeout(timeOut);
+    submitMessage.innerText = text;
+    submitMessage.style.visibility = "visible";
+    timeOut = setTimeout(() => {
+        submitMessage.style.visibility = "hidden";
+    }, 4000);
+
+}
+
+function clearFields() {
+    for (let field of Object.values(fields)) {
+        field.value = "";
+    }
+}
+
+function fieldsAreValid() {
+    let valid = true;
     for (let field of Object.values(fields)) {
         if (field.id === "email") {
-            isValidEmail(field);
+            valid &= isValidEmail(field);
         } else {
-            isNotEmpty(field);
+            valid &= isNotEmpty(field);
         }
     }
+    return !!valid;
 }
 
 

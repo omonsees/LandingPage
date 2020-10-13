@@ -51,7 +51,7 @@
     width: 50px;
     height: 50px;
     background-color: transparent;
-    animation: pulse 2s infinite;
+    animation: pulse 2.1s infinite;
     i {
         font-size: 250%;
         color: rgb(8, 253, 216);
@@ -62,16 +62,12 @@
 
 @keyframes pulse {
     0% {
-        // transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(8, 253, 216, 0.7);
     }
-    70% {
-        // transform: scale(1);
-        // box-shadow: 0 0 0 10px rgba(226, 10, 10, 0);
-        box-shadow: 0 0 0 10px rgba(8, 253, 216, 0);
-    }
+    // 70% {
+    //     // box-shadow: 0 0 0 10px rgba(8, 253, 216, 0);
+    // }
     100% {
-        // transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(8, 253, 216, 0);
+        box-shadow: 0 0 0 10px rgba(8, 253, 216, 0);
     }
 }
