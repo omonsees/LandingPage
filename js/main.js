@@ -33,11 +33,11 @@ document.addEventListener("DOMContentLoaded", event => {
     form.addEventListener("submit", event => {
         event.preventDefault();
         if (fieldsAreValid()) {
-            sendMail().then(() => {
-                clearFields();
+            sendMail().then(response => {
+                resetForm();
                 showTempSubmitMessage("Thanks for your message!");
             }).catch(() => {
-                clearFields();
+                resetForm();
                 showTempSubmitMessage("Oops, server problems :(")
             })
         } else {
@@ -49,8 +49,24 @@ document.addEventListener("DOMContentLoaded", event => {
 
 
 async function sendMail() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/todos/2");
+
+    const data = {
+        sender: fields.name.value,
+        email: fields.email.value,
+        subject: fields.subject.value,
+        message: fields.message.value
+    }
+
+    const response = await fetch("http://localhost:8080/mailservice/send", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
     const object = await response.json();
+    console.log(object);
+
 }
 
 function showTempSubmitMessage(text) {
@@ -63,9 +79,11 @@ function showTempSubmitMessage(text) {
 
 }
 
-function clearFields() {
+function resetForm() {
     for (let field of Object.values(fields)) {
         field.value = "";
+        field.classList.remove("green-box-shadow");
+        field.classList.remove("red-box-shadow");
     }
 }
 
