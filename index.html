@@ -5,11 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>oliver | software enthusiast</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://kit.fontawesome.com/fb02470bc4.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="css/styles.min.css">
 </head>
 
 <body>
@@ -17,15 +14,15 @@
         <div class="container">
             <nav class="navbar">
                 <ul>
-                    <li><a href="#skills">SKILLS</i></a></li>
-                    <li><a href="#about">ABOUT</i></a></li>
-                    <li><a href="#contact">CONTACT</i></a></li>
+                    <li><a href="#skills" aria-label="skills section">SKILLS</i></a></li>
+                    <li><a href="#about" aria-label="about section">ABOUT</i></a></li>
+                    <li><a href="#contact" aria-label="contact section">CONTACT</i></a></li>
                 </ul>
             </nav>
             <div class="slogan">
                 <h1><span class="green-text">Hey,</span><br> I'm Oliver,<br> software enthusiast.</h1>
             </div>
-            <a href="#skills">
+            <a href="#skills" aria-label="skills section">
                 <div class="arrow">
                     <i class="fas fa-angle-double-down"></i>
                 </div>
@@ -76,16 +73,20 @@
                 <div class="row">
                     <form action="" class="contact-form">
                         <div class="six columns">
-                            <input type="text" placeholder="Your name" id="name" class="contact-input">
+                            <label id="lbl-name" for="name">Your name</label>
+                            <input type="text" placeholder="Your name" id="name" class="contact-input" aria-labelledby="lbl-name">
                         </div>
                         <div class="six columns">
-                            <input type="text" placeholder="Your email" id="email" class="contact-input">
+                            <label id="lbl-email" for="email">Your email</label>
+                            <input type="text" placeholder="Your email" id="email" class="contact-input" aria-labelledby="lbl-email">
                         </div>
                         <div class="twelve columns">
-                            <input type="text" placeholder="Your subject" id="subject" class="contact-input">
+                            <label id="lbl-subject" for="subject">Your subject</label>
+                            <input type="text" placeholder="Your subject" id="subject" class="contact-input" aria-labelledby="lbl-subject">
                         </div>
                         <div class="twelve columns">
-                            <textarea name="message" id="message" cols="30" rows="25" placeholder="Your message" class="contact-input"></textarea>
+                            <label id="lbl-message" for="message">message</label>
+                            <textarea name="message" id="message" cols="30" rows="25" placeholder="Your message" class="contact-input" aria-labelledby="lbl-message"></textarea>
                         </div>
                         <div class="contact-control">
                             <small id="submit-message" class="green-text"></small>
@@ -100,12 +101,10 @@
         <div class="container">
             <hr>
             <i class="fas fa-angle-double-up scroll-to-top"></i>
-            <p>created by <a href="https://github.com/omonsees" target="_blank" rel="noopener noreferrer">omonsees</a></p>
+            <p>created by <a href="https://github.com/omonsees" target="_blank" rel="noopener noreferrer" aria-label="Github">omonsees</a></p>
     </footer>
-
-
     </div>
-
+    <script src="https://kit.fontawesome.com/fb02470bc4.js" crossorigin="anonymous"></script>
     <script src="./js/main.js"></script>
 </body>
 
