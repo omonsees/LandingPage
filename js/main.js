@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", event => {
     fields.name = document.querySelector("#name");
     fields.email = document.querySelector("#email");
     fields.subject = document.querySelector("#subject");
-    fields.message = document.querySelector("#message");
+    fields.text = document.querySelector("#text");
 
     for (let field of Object.values(fields)) {
         field.addEventListener("focusout", event => {
@@ -33,13 +33,7 @@ document.addEventListener("DOMContentLoaded", event => {
     form.addEventListener("submit", event => {
         event.preventDefault();
         if (fieldsAreValid()) {
-            sendMail().then(response => {
-                resetForm();
-                showTempSubmitMessage("Thanks for your message!");
-            }).catch(() => {
-                resetForm();
-                showTempSubmitMessage("Oops, server problems :(")
-            })
+            sendMail();
         } else {
             showTempSubmitMessage("Did you miss a field?")
         }
@@ -48,25 +42,32 @@ document.addEventListener("DOMContentLoaded", event => {
 
 
 
-async function sendMail() {
-
-    const data = {
+function sendMail() {
+    const message = {
         sender: fields.name.value,
         email: fields.email.value,
         subject: fields.subject.value,
-        message: fields.message.value
+        text: fields.text.value
     }
 
-    const response = await fetch("http://localhost:8080/mailservice/send", {
+    fetch("http://omonsees.de:8080/mailservice/send", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(message),
         headers: {
             'Content-type': 'application/json; charset=UTF-8'
         }
+    }).then(response => {
+        if (response.ok) {
+            resetForm();
+            showTempSubmitMessage("Thanks for your message!");
+        } else {
+            resetForm();
+            showTempSubmitMessage("Oops, server problems :(")
+        }
+    }).catch(error => {
+        resetForm();
+        showTempSubmitMessage("Oops, server problems :(")
     })
-    const object = await response.json();
-    console.log(object);
-
 }
 
 function showTempSubmitMessage(text) {
@@ -75,7 +76,7 @@ function showTempSubmitMessage(text) {
     submitMessage.style.visibility = "visible";
     timeOut = setTimeout(() => {
         submitMessage.style.visibility = "hidden";
-    }, 4000);
+    }, 5000);
 
 }
 
