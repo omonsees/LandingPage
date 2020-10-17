@@ -55,7 +55,7 @@ function sendMail() {
         text: fields.text.value
     }
 
-    fetch("http://omonsees.de:8080/mailservice/send", {
+    fetch("https://omonsees.de:8443/mailservice/send", {
         method: "POST",
         body: JSON.stringify(message),
         headers: {
@@ -88,7 +88,7 @@ function showTempSubmitMessage(text) {
     toggleSubmitMessage();
     timeOut = setTimeout(() => {
         toggleSubmitMessage();
-    }, 5000);
+    }, 4000);
 
 }
 
