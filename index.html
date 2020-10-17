@@ -7,7 +7,7 @@
     <title>oliver | software enthusiast</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -89,9 +89,17 @@
                             <label id="lbl-text" for="text">message</label>
                             <textarea name="text" id="text" cols="30" rows="25" placeholder="Your message" class="contact-input" aria-labelledby="lbl-text"></textarea>
                         </div>
-                        <div class="contact-control">
-                            <small id="submit-message" class="green-text"></small>
-                            <button><i class="far fa-paper-plane"></i>SEND</button>
+                        <div class="twelve columns">
+                            <div class="contact-control">
+                                <div id="loader" class="hidden">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <small id="submit-message" class="green-text hidden"></small>
+                                <button><i class="far fa-paper-plane"></i>SEND</button>
+                            </div>
                         </div>
                     </form>
                 </div>

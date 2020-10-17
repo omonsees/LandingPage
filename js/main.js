@@ -2,6 +2,7 @@
 
 const form = document.querySelector(".contact-form");
 const submitMessage = document.querySelector("#submit-message");
+const loader = document.querySelector("#loader");
 const fields = {};
 let timeOut;
 
@@ -40,9 +41,13 @@ document.addEventListener("DOMContentLoaded", event => {
     })
 })
 
-
+function toggleLoader() {
+    loader.classList.toggle("hidden");
+}
 
 function sendMail() {
+    toggleLoader();
+
     const message = {
         sender: fields.name.value,
         email: fields.email.value,
@@ -57,6 +62,7 @@ function sendMail() {
             'Content-type': 'application/json; charset=UTF-8'
         }
     }).then(response => {
+        toggleLoader();
         if (response.ok) {
             resetForm();
             showTempSubmitMessage("Thanks for your message!");
@@ -65,17 +71,23 @@ function sendMail() {
             showTempSubmitMessage("Oops, server problems :(")
         }
     }).catch(error => {
+        toggleLoader();
         resetForm();
         showTempSubmitMessage("Oops, server problems :(")
     })
 }
 
+
+function toggleSubmitMessage() {
+    submitMessage.classList.toggle("hidden");
+}
+
 function showTempSubmitMessage(text) {
     clearTimeout(timeOut);
     submitMessage.innerText = text;
-    submitMessage.style.visibility = "visible";
+    toggleSubmitMessage();
     timeOut = setTimeout(() => {
-        submitMessage.style.visibility = "hidden";
+        toggleSubmitMessage();
     }, 5000);
 
 }
