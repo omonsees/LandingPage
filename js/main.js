@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", event => {
         if (fieldsAreValid()) {
             sendMail();
         } else {
-            showTempSubmitMessage("Did you miss a field?")
+            showTempSubmitMessage("Did you forget a field?")
         }
     })
 })

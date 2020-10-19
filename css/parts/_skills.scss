@@ -8,10 +8,16 @@
         background-color: rgba(105, 105, 105, 0.2);
         border-radius: 4px;
         padding: 20px;
-        min-height: 500px;
+        // min-height: 430px;
         .skill-icon {
             color: rgb(8, 253, 216);
             margin-bottom: 10px;
+        }
+        p {
+            font-weight: lighter;
+        }
+        p:last-child {
+            margin-bottom: 0;
         }
     }
     .skill-item:hover {
